@@ -1,13 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "entrada.h"
+#include "calendario.h"
 
-int solicitarMes(void);
-int solicitarAnio(void);
-int solicitarDia(void);
-int diasdelMes(int mes);
-int verificarDia(int dia, int mes);
-
-const char *mesNombre(int mes);
 
 
 int main() {
@@ -29,59 +24,3 @@ int main() {
 
 }
 
-int solicitarMes(void){
-    int mes;
-    printf("Ingrese el mes: ");
-    scanf("%d", &mes);
-    while(mes < 1 || mes > 12){
-        printf("Mes invalido ingrese nuevamente: ");
-        scanf("%d", &mes);
-    }
-    return mes;
-}
-
-int solicitarAnio(void){
-    int anio;
-    printf("Ingrese el anio: ");
-    scanf("%d", &anio);
-    while(anio < 1){
-        printf("Año invalido ingrese nuevamente: ");
-        scanf("%d", &anio);
-    }
-    return anio;
-}
-
-int solicitarDia(void){
-    int dia;
-    printf("Ingrese el dia: ");
-    scanf("%d", &dia);
-    while(dia < 1 || dia > 31){
-        printf("Dia invalido ingrese nuevamente: ");
-        scanf("%d", &dia);
-    }
-    return dia;
-}
-
-
-const char *mesNombre(int mes){
-    const char *nombres[] = {"Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"};
-    return nombres[mes - 1];
-}
-
-int diasdelMes(int mes){
-    int diasdelMes[] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
-
-    return diasdelMes[mes - 1];
-
-}
-
-
-int verificarDia(int dia, int mes){
-    
-    while (dia > 1 && dia > diasdelMes(mes)){
-        printf("El Dia es mayor o no coincide con la cantidad de dias del mes. \n");
-        printf("Ingrese el dia: ");
-        scanf("%d", &dia);
-    };
-    return dia;
-}
