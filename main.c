@@ -17,7 +17,13 @@ int main() {
     
     int anio = solicitarAnio();
     printf("El año es: %d\n", anio);
-
+    esBisiesto(anio);
+    if(esBisiesto(anio)){
+        printf("El anio es bisiesto\n");
+    }
+    else{
+        printf("El anio no es bisiesto\n");
+    }
 
     printf("El calendario es: %d/%d/%d\n", dia, mes, anio);
     return 0;
