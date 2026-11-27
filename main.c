@@ -5,6 +5,8 @@ int solicitarMes(void);
 int solicitarAnio(void);
 int solicitarDia(void);
 int diasdelMes(int mes);
+int verificarDia(int dia, int mes);
+
 const char *mesNombre(int mes);
 
 
@@ -13,10 +15,14 @@ int main() {
     printf("El mes es: %s\n", mesNombre(mes));
     printf("El mes tiene %d dias \n", diasdelMes(mes));
 
+    int dia = solicitarDia();
+    dia = verificarDia(dia, mes);
+   
+    printf("El dia es: %d\n", dia);
+    
     int anio = solicitarAnio();
     printf("El año es: %d\n", anio);
-    int dia = solicitarDia();
-    printf("El dia es: %d\n", dia);
+
 
     printf("El calendario es: %d/%d/%d\n", dia, mes, anio);
     return 0;
@@ -67,4 +73,15 @@ int diasdelMes(int mes){
 
     return diasdelMes[mes - 1];
 
+}
+
+
+int verificarDia(int dia, int mes){
+    
+    while (dia > 1 && dia > diasdelMes(mes)){
+        printf("El Dia es mayor o no coincide con la cantidad de dias del mes. \n");
+        printf("Ingrese el dia: ");
+        scanf("%d", &dia);
+    };
+    return dia;
 }
