@@ -15,7 +15,7 @@ int solicitarMes(void){
 
 int solicitarAnio(void){
     int anio;
-    printf("Ingrese el anio: ");
+    printf("Ingrese el año: ");
     scanf("%d", &anio);
     while(anio < 1){
         printf("Año invalido ingrese nuevamente: ");
