@@ -1,3 +1,4 @@
+#include <string.h>
 #include "calendario.h"
 #include "stdio.h"
 
@@ -50,29 +51,73 @@ int primerDiaMes(int mes, int anio){
 }
 
 void mostrarCalendario(int mes, int anio, int dia){
-    int i = 0;
     int inicio = primerDiaMes(mes, anio);
     int diasMax = diasdelMes(mes, anio);
+    int ancho = 21;
 
-    printf("\n      %s %d\n\n", mesNombre(mes), anio);
-    printf("Lu Ma Mi Ju Vi Sa Do\n");
+    char titulo[50];
 
-    for(i = 0; i < inicio; i++){
+    snprintf(titulo, sizeof(titulo),
+             "%s %d", mesNombre(mes), anio);
+
+    int longitud = strlen(titulo);
+    int izquierda = (ancho - longitud) / 2;
+    int derecha = ancho - longitud - izquierda;
+
+
+    printf("\n+---------------------+\n");
+
+    printf("|%*s\033[36m%s\033[0m%*s|\n",
+           izquierda, "", titulo, derecha, "");
+
+    printf("+---------------------+\n");
+
+    printf("|Lu Ma Mi Ju Vi \033[31mSa Do\033[0m |\n");
+
+    printf("+---------------------+\n");
+
+    printf("|");
+
+    for(int i = 0; i < inicio; i++){
         printf("   ");
     }
 
-    for(i = 0; i < diasMax; i++){
+
+    for(int i = 0; i < diasMax; i++){
+
+        int columna = (i + inicio) % 7;
+
         if(i + 1 == dia){
             printf("\033[1;42;37m%2d\033[0m ", i + 1);
+        }
+        else if(columna == 5 || columna == 6){
+            printf("\033[31m%2d\033[0m ", i + 1);
         }
         else{
             printf("%2d ", i + 1);
         }
 
-        if((i + 1 + inicio) % 7 == 0){
-            printf("\n");
+        if(columna == 6){
+            printf("|\n");
+
+            if(i + 1 < diasMax){
+                printf("|");
+            }
         }
     }
 
-    printf("\n\nCalendario Impreso\n");
+    int restantes = (inicio + diasMax) % 7;
+
+    if(restantes != 0){
+
+        for(int i = restantes; i < 7; i++){
+            printf("   ");
+        }
+
+        printf("|\n");
+    }
+    printf("+---------------------+\n");
+
+    printf("\nFecha seleccionada: %02d/%02d/%d\n",
+           dia, mes, anio);
 }
