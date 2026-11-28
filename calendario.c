@@ -19,9 +19,9 @@ int diasdelMes(int mes, int anio){
 }
 
 
-int verificarDia(int dia, int mes){
+int verificarDia(int dia, int mes, int anio){
     
-    while (dia < 1 && dia > diasdelMes(mes)){
+    while (dia < 1 || dia > diasdelMes(mes, anio)){
         printf("El Dia es mayor o no coincide con la cantidad de dias del mes. \n");
         printf("Ingrese el dia: ");
         scanf("%d", &dia);

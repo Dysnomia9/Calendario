@@ -16,7 +16,7 @@ int main() {
     printf("El mes tiene %d dias \n", diasdelMes(mes,anio));
 
     int dia = solicitarDia();
-    dia = verificarDia(dia, mes);
+    dia = verificarDia(dia, mes, anio);
    
     printf("El dia es: %d\n", dia);
     
