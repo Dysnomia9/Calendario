@@ -48,3 +48,22 @@ int primerDiaMes(int mes, int anio){
 
     return totalDias % 7;
 }
+
+void mostrarCalendario(int mes, int anio){
+   int i = 0;
+   printf(" \n %s %d \n", mesNombre(mes),anio);
+    
+
+   int diasMax = diasdelMes(mes,anio);
+   printf("Lu Ma Mi Ju Vi Sa Do \n");
+   for(i = 0; i < diasMax; i++){
+    printf("%2d ", i + 1);
+    if((i + 1) % 7 == 0){
+        printf("\n");
+    }
+    printf("\n Calendario Impreso \n")
+   }
+
+
+
+}

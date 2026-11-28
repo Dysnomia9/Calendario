@@ -1,7 +1,7 @@
 CC = gcc
-CFLAGS = -Wall -Wextra -Wpedantic
+CFLAGS = -Wall -Wextra -Wpedantic -Ientrada -Icalendario
 TARGET = calendario.exe
-SRC = main.c entrada.c calendario.c
+SRC = main.c entrada/entrada.c calendario/calendario.c
 
 all:
 	$(CC) $(CFLAGS) $(SRC) -o $(TARGET)

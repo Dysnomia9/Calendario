@@ -26,7 +26,9 @@ int main() {
 
 
     printf("El calendario es: %d/%d/%d\n", dia, mes, anio);
+   
+    mostrarCalendario(mes, anio);
+   
     return 0;
-
 }
 
