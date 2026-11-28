@@ -1,3 +1,4 @@
 # Ignorar archivos temporales
 *.exe
 *.o
+*.obj
